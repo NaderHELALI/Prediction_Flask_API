@@ -10,4 +10,5 @@ Le but de ce projet est de prédire si un utilisateur en ligne, lorsqu'il entre 
 
 # Choix Du Model
 A partir de nos études sur le dataset "online_shopper_intention" nous avons pu mettre en place 4 différents models que vous pouvez retrouvez sur le notebook. 
+
 Le meilleur modèle mise en place a été un Random Forest, par conséquent nous avons choisi de mettre en production ce modèle sur notre API
