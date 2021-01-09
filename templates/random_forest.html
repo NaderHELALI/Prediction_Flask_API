@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+  <style>
+    .navbar-text h1 {
+      color: #fff;
+      font-size: 40px;
+      align-content: center;
+    }
+
+    body {
+      background-color: grey;
+    }
+
+    form {
+      margin-top: 50px;
+      margin: auto;
+      width: 35%;
+    }
+
+    .result {
+      margin: auto;
+      width: 80%;
+      margin-bottom: 30px;
+      border: 1px solid #ccc;
+      background-color: grey;
+      color: #fff;
+      padding: 20px;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      transition: 0.3s;
+    }
+  </style>
+
+  <head>
+    <title>API | Online Shopper Prediction</title>
+
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <nav class="navbar navbar-light bg-dark">
+      <span class="navbar-text">
+        <h1>API | Online Shopper Prediction</h1>
+      </span>
+    </nav>
+    <div class="result" align="center">
+        {% if result !=  null %} {% for variable, value in original_input.items() %}
+        <b>{{ variable }}</b> : {{ value }} ,  {% endfor %}
+        <br />
+        <br />
+        <h1>Predicted Revenue:</h1>
+        <p style="font-size: 50px">{{ result }}</p>
+        {% endif %}
+      </div>
+
+    <form action="{{ url_for('randomForest') }}" method="POST">
+      <div class="form-group">
+        <legend>Input Variables</legend>
+        <br />Administrative:<br />
+
+        <input
+          name="Administrative"
+          type="number"
+          class="form-control"
+          required
+        />
+        <br />
+
+        <br />
+        Administrative_Duration:<br />
+        <input
+          name="Administrative_Duration"
+          type="number"
+          class="form-control"
+          required
+        />
+        <br />
+
+        <br />Informational<br />
+        <input
+          name="Informational"
+          type="number"
+          class="form-control"
+          required
+        />
+        <br />
+
+        <br />Informational_Duration<br />
+        <input
+          name="Informational_Duration"
+          type="number"
+          class="form-control"
+          required
+        />
+        <br />
+
+        <br />ProductRelated<br />
+        <input
+          name="ProductRelated"
+          type="number"
+          class="form-control"
+          required
+        />
+        <br />
+
+        <br />ProductRelated_Duration<br />
+        <input
+          name="ProductRelated_Duration"
+          type="number"
+          class="form-control"
+          required
+        />
+        <br />
+
+        <br />BounceRates<br />
+        <input name="BounceRates" type="number" class="form-control" step="0.01" required />
+        <br />
+
+        <br />ExitRates<br />
+        <input name="ExitRates" type="floar" class="form-control" step="0.01" required />
+        <br />
+
+        <br />PageValues<br />
+        <input name="PageValues" type="number" class="form-control" required />
+        <br />
+
+        <br />SpecialDay<br />
+        <input name="SpecialDay" type="number" class="form-control" required />
+        <br />
+        <br />Month<br />
+        <input name="Month" type="string" class="form-control" required />
+        <br />
+        <br />OperatingSystems<br />
+        <input
+          name="OperatingSystems"
+          type="number"
+          class="form-control"
+          required
+        />
+        <br />
+
+        <br />Browser<br />
+        <input name="Browser" type="number" class="form-control" required />
+        <br />
+
+        <br />Region<br />
+        <input name="Region" type="number" class="form-control" required />
+        <br />
+        <br />TrafficType<br />
+        <input name="TrafficType" type="number" class="form-control" required />
+        <br />
+        <br />VisitorType<br />
+        <input name="VisitorType" type="string" class="form-control" required />
+        <br />
+
+        <br />Weekend<br />
+        <input name="Weekend" type="boolean" class="form-control" required />
+        <br />
+
+        <input name='button'type="submit" value="Submit" class="btn btn-primary" />
+      </div>
+    </form>
+
+    <br />
+
+
+
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
