@@ -61,8 +61,7 @@ def randomForest():
                                                                                                                                                                                                                                                                                                                        'VisitorType_Other', 'VisitorType_Returning_Visitor', 'Month_Dec',
                                                                                                                                                                                                                                                                                                                        'Month_Feb', 'Month_Jul', 'Month_June', 'Month_Mar', 'Month_May',
                                                                                                                                                                                                                                                                                                                        'Month_Nov', 'Month_Oct', 'Month_Sep'])
-
-           
+    
         for temp in input_variables.columns[-9] :
             if Month in temp:
                 input_variables[temp][0]=1
