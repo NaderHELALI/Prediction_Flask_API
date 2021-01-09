@@ -6,7 +6,6 @@ from sklearn.model_selection import train_test_split
 
 app = Flask(__name__)
 
-
 def Processing():
     data = pd.read_csv('online_shoppers_intention.csv')
     data['Weekend'] = data['Weekend'].map({False: 0, True: 1})
@@ -16,7 +15,6 @@ def Processing():
     X = pd.get_dummies(X, columns=['VisitorType'], drop_first=True)
     X = pd.get_dummies(X, columns=['Month'], drop_first=True)
     return [X, y]
-
 
 @app.route("/")
 def home():
@@ -55,8 +53,6 @@ def randomForest():
         VisitorType = request.form['VisitorType']
 
         Weekend=0 if Weekend else 1
-        
-        
 
         input_variables = pd.DataFrame([[Administrative, Administrative_Duration, Informational, Informational_Duration, ProductRelated, ProductRelated_Duration, BounceRates, ExitRates, PageValues, SpecialDay, OperatingSystems, Browser, Region, TrafficType, Weekend, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]], columns=['Administrative', 'Administrative_Duration', 'Informational',
                                                                                                                                                                                                                                                                                                                        'Informational_Duration', 'ProductRelated', 'ProductRelated_Duration',
@@ -71,21 +67,12 @@ def randomForest():
             if Month in temp:
                 input_variables[temp][0]=1
         
-
         for temp in input_variables.columns[15:16] :
             if VisitorType in temp :
                 input_variables[temp][0]=1
         
-        
-
         prediction = bool(models.getPrediction(input_variables, model)[0])
-
-
-    
-          
-
         print(prediction)
-        
         
         return render_template('random_forest.html', original_input={'Administrative': Administrative, 'Administrative_Duration': Administrative_Duration, 'Informational_Duration': Informational_Duration, 'ProductRelated': ProductRelated, 'ProductRelated_Duration': ProductRelated_Duration, 'BounceRates': BounceRates, 'ExitRates': ExitRates, 'PageValues': PageValues, 'SpecialDay': SpecialDay, 'OperatingSystems': OperatingSystems,
                                                                      'Browser': Browser, 'Region': Region, 'TrafficType': TrafficType, 'Weekend': Weekend_stored, 'Month': Month,'VisitorType': VisitorType},
